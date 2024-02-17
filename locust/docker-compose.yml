@@ -1,0 +1,16 @@
+version: '3.9'
+
+services:
+  locust:
+    image: locustio/locust
+    ports:
+     - "8089:8089"
+    volumes:
+      - ./locust_file:/mnt/locust
+    networks:
+      - milvus
+    command: -f /mnt/locust/locustfile.py
+
+networks:
+  milvus:
+    external: true
